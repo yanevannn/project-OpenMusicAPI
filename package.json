@@ -6,7 +6,8 @@
     "start-dev": "nodemon ./src/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "migrate": "node-pg-migrate up"
+    "migrate:create": "node-pg-migrate",
+    "migrate:up": "node-pg-migrate up"
   },
   "author": "yanevannn",
   "license": "ISC",

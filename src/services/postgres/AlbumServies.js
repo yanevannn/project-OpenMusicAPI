@@ -28,13 +28,13 @@ class AlbumService {
       values: [id],
     };
 
-    // const songQuery = {
-    //   text: 'SELECT id, title, performer FROM songs WHERE "albumId" = $1',
-    //   values: [id],
-    // };
+    const songQuery = {
+      text: 'SELECT id, title, performer FROM songs WHERE "albumId" = $1',
+      values: [id],
+    };
 
     const result = await this._pool.query(query);
-    // const resultSongs = await this._pool.query(songQuery);
+    const resultSongs = await this._pool.query(songQuery);
 
     if (!result.rowCount) {
       throw new NotFoundError('Album not found');
@@ -45,7 +45,7 @@ class AlbumService {
       id: album.id,
       name: album.name,
       year: album.year,
-      // songs: resultSongs.rows,
+      songs: resultSongs.rows,
     };
 
     return allResult;
